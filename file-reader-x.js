@@ -7,7 +7,7 @@ function updateSettingsValues(options, settings) {
 }
 
 function readFile(options = {}) {
-    let readFileSettings = { file: {}, readFileAs: readAsDataURL };
+    let readFileSettings = { file: {}, readFileAs: "readAsDataURL" };
 
     updateSettingsValues(options, readFileSettings);
 
@@ -18,16 +18,16 @@ function readFile(options = {}) {
     return new Promise((resolve, reject) => {
         let fileReader = new FileReader();
         fileReader.onload = event => {
-            readFile.file.data = event.target.result;
-            resolve(readFile.file);
+            readFileSettings.file.data = event.target.result;
+            resolve(readFileSettings.file);
         };
-        fileReader.onerror = event => { reject(new Error(`Error reading ${readFile.file.name} : ${event.target.result}`)); };
-        fileReader[readFileSettings.readFileAs](readFile.file);
+        fileReader.onerror = event => { reject(new Error(`Error reading ${readFileSettings.file.name} : ${event.target.result}`)); };
+        fileReader[readFileSettings.readFileAs](readFileSettings.file);
     });
 }
 
 function readFiles(options = {}) {
-    let readFilesSettings = { files: [], readFilesAs: readAsDataURL };
+    let readFilesSettings = { files: [], readFilesAs: "readAsDataURL" };
 
     updateSettingsValues(options, readFilesSettings);
 
