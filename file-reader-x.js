@@ -1,8 +1,3 @@
-const readAsArrayBuffer = "readAsArrayBuffer";
-const readAsBinaryString = "readAsBinaryString";
-const readAsDataURL = "readAsDataURL";
-const readAsText = "readAsText";
-
 function updateSettingsValues(options, settings) {
     Object.keys(options).forEach(key => {
         if (key in settings) {
@@ -55,39 +50,39 @@ function readFiles(options = {}) {
 
 export function readAsArrayBuffer(dataToRead) {
     if (Array.isArray(dataToRead)) {
-        return readFiles({ files: dataToRead, readFilesAs: readAsArrayBuffer });
+        return readFiles({ files: dataToRead, readFilesAs: "readAsArrayBuffer" });
     } else {
-        return readFile({ file: dataToRead, readFileAs: readAsArrayBuffer });
+        return readFile({ file: dataToRead, readFileAs: "readAsArrayBuffer" });
     }
 }
 
 export function readAsBinaryString(dataToRead) {
     if (Array.isArray(dataToRead)) {
-        return readFiles({ files: dataToRead, readFilesAs: readAsBinaryString });
+        return readFiles({ files: dataToRead, readFilesAs: "readAsBinaryString" });
     } else {
-        return readFile({ file: dataToRead, readFileAs: readAsBinaryString });
+        return readFile({ file: dataToRead, readFileAs: "readAsBinaryString" });
     }
 }
 
 export function readAsDataURL(dataToRead) {
     if (Array.isArray(dataToRead)) {
-        return readFiles({ files: dataToRead, readFilesAs: readAsDataURL });
+        return readFiles({ files: dataToRead, readFilesAs: "readAsDataURL" });
     } else {
-        return readFile({ file: dataToRead, readFileAs: readAsDataURL });
+        return readFile({ file: dataToRead, readFileAs: "readAsDataURL" });
     }
 }
 
 export function readAsText(dataToRead) {
     if (Array.isArray(dataToRead)) {
-        return readFiles({ files: dataToRead, readFilesAs: readAsText });
+        return readFiles({ files: dataToRead, readFilesAs: "readAsText" });
     } else {
-        return readFile({ file: dataToRead, readFileAs: readAsText });
+        return readFile({ file: dataToRead, readFileAs: "readAsText" });
     }
 }
 
-module.exports = {
-    readAsArrayBuffer: readAsArrayBuffer,
-    readAsBinaryString: readAsBinaryString,
-    readAsDataURL: readAsDataURL,
-    readAsText: readAsText
-};
+// module.exports = {
+//     readAsArrayBuffer: readAsArrayBuffer,
+//     readAsBinaryString: readAsBinaryString,
+//     readAsDataURL: readAsDataURL,
+//     readAsText: readAsText
+// };
