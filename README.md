@@ -4,13 +4,13 @@ A package to ease the reading of files.
 
 # Installation
 
- `npm i file-reader`
+ `npm i file-reader-x`
 
 # Usage
 
 ``` 
 
-import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "../file-reader.js";
+import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "../file-reader-x.js";
 
 let file = document.getElementById("single-file-input").files[0];
 let files = Array.from(document.getElementById("multiple-file-input").files);

@@ -1,0 +1,22 @@
+{
+  "name": "file-reader-x",
+  "version": "1.0.0",
+  "description": "A package to ease the reading of files.",
+  "main": "file-reader-x.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nivle/file-reader-x.git"
+  },
+  "keywords": [
+    "file-reader-x"
+  ],
+  "author": "nivle",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nivle/file-reader-x/issues"
+  },
+  "homepage": "https://github.com/nivle/file-reader-x#readme"
+}
