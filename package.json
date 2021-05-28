@@ -1,6 +1,6 @@
 {
   "name": "file-reader-x",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A package to ease the reading of files.",
   "main": "file-reader-x.js",
   "scripts": {
