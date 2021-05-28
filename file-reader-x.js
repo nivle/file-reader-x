@@ -79,10 +79,3 @@ export function readAsText(dataToRead) {
         return readFile({ file: dataToRead, readFileAs: "readAsText" });
     }
 }
-
-module.exports = {
-    readAsArrayBuffer: readAsArrayBuffer,
-    readAsBinaryString: readAsBinaryString,
-    readAsDataURL: readAsDataURL,
-    readAsText: readAsText
-};
