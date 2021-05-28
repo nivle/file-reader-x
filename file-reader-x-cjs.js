@@ -7,7 +7,7 @@ function updateSettingsValues(options, settings) {
 }
 
 function readFile(options = {}) {
-    let readFileSettings = { file: {}, readFileAs: "readAsDataURL" };
+    let readFileSettings = { file: {}, readFileAs: "readAsDataURL", encoding: "utf-8" };
 
     updateSettingsValues(options, readFileSettings);
 
@@ -17,17 +17,26 @@ function readFile(options = {}) {
 
     return new Promise((resolve, reject) => {
         let fileReader = new FileReader();
+
         fileReader.onload = event => {
             readFileSettings.file.data = event.target.result;
             resolve(readFileSettings.file);
         };
-        fileReader.onerror = event => { reject(new Error(`Error reading ${readFileSettings.file.name} : ${event.target.result}`)); };
-        fileReader[readFileSettings.readFileAs](readFileSettings.file);
+
+        fileReader.onerror = event => {
+            reject(new Error(`Error reading ${readFileSettings.file.name} : ${event.target.result}`));
+        };
+
+        if (readFileSettings.readFilesAs === "readAsText") {
+            fileReader[readFileSettings.readFileAs](readFileSettings.file, readFileSettings.encoding);
+        } else {
+            fileReader[readFileSettings.readFileAs](readFileSettings.file);
+        }
     });
 }
 
 function readFiles(options = {}) {
-    let readFilesSettings = { files: [], readFilesAs: "readAsDataURL" };
+    let readFilesSettings = { files: [], readFilesAs: "readAsDataURL", encoding: "utf-8" };
 
     updateSettingsValues(options, readFilesSettings);
 
@@ -38,12 +47,21 @@ function readFiles(options = {}) {
     return Promise.all(readFilesSettings.files.map(file => {
         return new Promise((resolve, reject) => {
             let fileReader = new FileReader();
+
             fileReader.onload = event => {
                 file.data = event.target.result;
                 resolve(file);
             };
-            fileReader.onerror = event => { reject(new Error(`Error reading ${file.name} : ${event.target.result}`)); };
-            fileReader[readFilesSettings.readFilesAs](file);
+
+            fileReader.onerror = event => {
+                reject(new Error(`Error reading ${file.name} : ${event.target.result}`));
+            };
+
+            if (readFilesSettings.readFilesAs === "readAsText") {
+                fileReader[readFilesSettings.readFilesAs](file, readFilesSettings.encoding);
+            } else {
+                fileReader[readFilesSettings.readFilesAs](file);
+            }
         });
     }));
 }
@@ -72,11 +90,11 @@ function readAsDataURL(dataToRead) {
     }
 }
 
-function readAsText(dataToRead) {
+function readAsText(dataToRead, encoding = "utf-8") {
     if (Array.isArray(dataToRead)) {
-        return readFiles({ files: dataToRead, readFilesAs: "readAsText" });
+        return readFiles({ files: dataToRead, readFilesAs: "readAsText", encoding: encoding });
     } else {
-        return readFile({ file: dataToRead, readFileAs: "readAsText" });
+        return readFile({ file: dataToRead, readFileAs: "readAsText", encoding: encoding });
     }
 }
 
