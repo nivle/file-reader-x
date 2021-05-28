@@ -80,9 +80,9 @@ export function readAsText(dataToRead) {
     }
 }
 
-// module.exports = {
-//     readAsArrayBuffer: readAsArrayBuffer,
-//     readAsBinaryString: readAsBinaryString,
-//     readAsDataURL: readAsDataURL,
-//     readAsText: readAsText
-// };
+module.exports = {
+    readAsArrayBuffer: readAsArrayBuffer,
+    readAsBinaryString: readAsBinaryString,
+    readAsDataURL: readAsDataURL,
+    readAsText: readAsText
+};
