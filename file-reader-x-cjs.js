@@ -27,7 +27,7 @@ function readFile(options = {}) {
             reject(new Error(`Error reading ${readFileSettings.file.name} : ${event.target.result}`));
         };
 
-        if (readFileSettings.readFilesAs === "readAsText") {
+        if (readFileSettings.readFileAs === "readAsText") {
             fileReader[readFileSettings.readFileAs](readFileSettings.file, readFileSettings.encoding);
         } else {
             fileReader[readFileSettings.readFileAs](readFileSettings.file);
