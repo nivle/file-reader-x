@@ -40,7 +40,7 @@ function readFiles(options = {}) {
 
     updateSettingsValues(options, readFilesSettings);
 
-    if ((readFilesSettings.files.some(file => !(file instanceof Blob)))) {
+    if (readFilesSettings.files.some(file => !(file instanceof Blob))) {
         throw new TypeError("A given file is not a file or blob");
     }
 
