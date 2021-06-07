@@ -6,14 +6,20 @@ A package to ease the reading of files.
 
  `npm i file-reader-x`
 
+# Raw
+
+ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/file-reader-x-esm.js
+
+CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/file-reader-x-cjs.js
+
 # Usage
 
-``` 
+```
 
-import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "../file-reader-x.js";
+import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "/node_modules/file-reader-x/file-reader-x-esm.js";
 
 let file = document.getElementById("single-file-input").files[0];
-let files = Array.from(document.getElementById("multiple-file-input").files);
+let files = Array.from(document.getElementById("multiple-files-input").files);
 
 readAsArrayBuffer(file).then(f => console.log(f));
 // => file with the red data (ArrayBuffer)
