@@ -8,6 +8,8 @@ A package to ease the reading of files.
 
 # Raw
 
+JS: https://raw.githubusercontent.com/nivle/file-reader-x/main/file-reader-x.js
+
 ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/file-reader-x-esm.js
 
 CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/file-reader-x-cjs.js
