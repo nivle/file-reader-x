@@ -3,15 +3,17 @@
     "version": "1.1.6",
     "description": "A package to ease the reading of files.",
     "main": "file-reader-x.js",
-    "directories": {
-        "src:": "./src/lib/*.js"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/nivle/file-reader-x.git"
     },
     "keywords": [
-        "file-reader-x"
+        "file-reader",
+        "file-reader-x",
+        "angular-file-reader",
+        "angular-file-reader-x",
+        "file-reader-angular",
+        "file-reader-angular-x"
     ],
     "author": "nivle",
     "license": "Apache-2.0",
