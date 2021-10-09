@@ -32,35 +32,35 @@ export class FileReaderXComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public readAsArrayBuffer(dataToRead: Blob | Blob[]) {
-        if (Array.isArray(dataToRead)) {
-            return this.fileReaderXService.readFiles(dataToRead, "readAsArrayBuffer");
+    public readAsArrayBuffer(fileInputData: Blob | Blob[]) {
+        if (Array.isArray(fileInputData)) {
+            return this.fileReaderXService.readFiles(fileInputData, "readAsArrayBuffer");
         } else {
-            return this.fileReaderXService.readFile(dataToRead, "readAsArrayBuffer");
+            return this.fileReaderXService.readFile(fileInputData, "readAsArrayBuffer");
         }
     }
 
-    public readAsBinaryString(dataToRead: Blob | Blob[]) {
-        if (Array.isArray(dataToRead)) {
-            return this.fileReaderXService.readFiles(dataToRead, "readAsBinaryString");
+    public readAsBinaryString(fileInputData: Blob | Blob[]) {
+        if (Array.isArray(fileInputData)) {
+            return this.fileReaderXService.readFiles(fileInputData, "readAsBinaryString");
         } else {
-            return this.fileReaderXService.readFile(dataToRead, "readAsBinaryString");
+            return this.fileReaderXService.readFile(fileInputData, "readAsBinaryString");
         }
     }
 
-    public readAsDataURL(dataToRead: Blob | Blob[]) {
-        if (Array.isArray(dataToRead)) {
-            return this.fileReaderXService.readFiles(dataToRead, "readAsDataURL");
+    public readAsDataURL(fileInputData: Blob | Blob[]) {
+        if (Array.isArray(fileInputData)) {
+            return this.fileReaderXService.readFiles(fileInputData, "readAsDataURL");
         } else {
-            return this.fileReaderXService.readFile(dataToRead, "readAsDataURL");
+            return this.fileReaderXService.readFile(fileInputData, "readAsDataURL");
         }
     }
 
-    public readAsText(dataToRead: Blob | Blob[], encoding = "utf-8") {
-        if (Array.isArray(dataToRead)) {
-            return this.fileReaderXService.readFiles(dataToRead, "readAsText", encoding);
+    public readAsText(fileInputData: Blob | Blob[], encoding = "utf-8") {
+        if (Array.isArray(fileInputData)) {
+            return this.fileReaderXService.readFiles(fileInputData, "readAsText", encoding);
         } else {
-            return this.fileReaderXService.readFile(dataToRead, "readAsText", encoding);
+            return this.fileReaderXService.readFile(fileInputData, "readAsText", encoding);
         }
     }
 }
