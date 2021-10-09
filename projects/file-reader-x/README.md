@@ -8,43 +8,43 @@ A package to ease the reading of files.
 
 # Raw
 
-JS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x.js
+JS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/dist/file-reader-x.js
 
-CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x-cjs.js
+CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/dist/file-reader-x-cjs.js
 
-ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x-esm.js
+ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/dist/file-reader-x-esm.js
 
 # Esm Example
 
 ```
 
-import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "/node_modules/file-reader-x/src/lib/file-reader-x-esm.js";
+import { fileReaderX } from "/node_modules/file-reader-x/dist/file-reader-x-esm.js";
 
 let file = document.getElementById("single-file-input").files[0];
 let files = Array.from(document.getElementById("multiple-files-input").files);
 
-readAsArrayBuffer(file).then(f => console.log(f));
+fileReaderX.readAsArrayBuffer(file).then(f => console.log(f));
 // => file with the red data (ArrayBuffer)
 
-readAsArrayBuffer(files).then(f => console.log(f));
+fileReaderX.readAsArrayBuffer(files).then(f => console.log(f));
 // => array of files with the red data (ArrayBuffer)
 
-readAsBinaryString(file).then(f => console.log(f));
+fileReaderX.readAsBinaryString(file).then(f => console.log(f));
 // => file with the red data (BinaryString)
 
-readAsBinaryString(files).then(f => console.log(f));
+fileReaderX.readAsBinaryString(files).then(f => console.log(f));
 // => array of files with the red data (BinaryString)
 
-readAsDataURL(file).then(f => console.log(f));
+fileReaderX.readAsDataURL(file).then(f => console.log(f));
 // => file with the red data (DataURL)
 
-readAsDataURL(files).then(f => console.log(f));
+fileReaderX.readAsDataURL(files).then(f => console.log(f));
 // => array of files with the red data (DataURL)
 
-readAsText(file).then(f => console.log(f));
+fileReaderX.readAsText(file).then(f => console.log(f));
 // => file with the red data (Text)
 
-readAsText(files).then(f => console.log(f));
+fileReaderX.readAsText(files).then(f => console.log(f));
 // => array of files with the red data (Text)
 
 ```

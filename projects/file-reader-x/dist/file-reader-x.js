@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-let fileReaderX = {
+const fileReaderX = {
     readFile: function readFile(options = { file: null, readFileAs: "readAsDataURL", encoding: "utf-8" }) {
         return new Promise(resolve => {
             let fileReader = new FileReader();

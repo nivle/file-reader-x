@@ -35,7 +35,7 @@ function readFiles(options = { files: [], readFileAs: "readAsDataURL", encoding:
     }));
 }
 
-let fileReaderX = {
+export const fileReaderX = {
     readAsArrayBuffer: function readAsArrayBuffer(fileInputData) {
         if (Array.isArray(fileInputData)) {
             return readFiles({ files: fileInputData, readFilesAs: "readAsArrayBuffer" });
@@ -67,8 +67,4 @@ let fileReaderX = {
             return readFile({ file: fileInputData, readFileAs: "readAsText", encoding: encoding });
         }
     }
-};
-
-module.exports = {
-    fileReaderX: fileReaderX
 };
