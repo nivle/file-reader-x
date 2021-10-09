@@ -8,17 +8,17 @@ A package to ease the reading of files.
 
 # Raw
 
-JS: https://raw.githubusercontent.com/nivle/file-reader-x/main/dist/file-reader-x.js
+JS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x.js
 
-CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/dist/file-reader-x-cjs.js
+CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x-cjs.js
 
-ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/dist/file-reader-x-esm.js
+ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x-esm.js
 
-# Usage
+# Esm Example Usage
 
 ```
 
-import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "/node_modules/file-reader-x/dist/file-reader-x-esm.js";
+import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "/node_modules/file-reader-x/dist/file-reader-x/src/lib/file-reader-x-esm.js";
 
 let file = document.getElementById("single-file-input").files[0];
 let files = Array.from(document.getElementById("multiple-files-input").files);
