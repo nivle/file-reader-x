@@ -14,7 +14,7 @@ CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-re
 
 ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/src/lib/file-reader-x-esm.js
 
-# Esm Example Usage
+# Esm Example
 
 ```
 
