@@ -18,7 +18,7 @@ ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-re
 
 ```
 
-import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "/node_modules/file-reader-x/dist/file-reader-x/src/lib/file-reader-x-esm.js";
+import {readAsArrayBuffer, readAsBinaryString, readAsDataURL, readAsText} from "/node_modules/file-reader-x/src/lib/file-reader-x-esm.js";
 
 let file = document.getElementById("single-file-input").files[0];
 let files = Array.from(document.getElementById("multiple-files-input").files);
