@@ -8,12 +8,7 @@
         "url": "git+https://github.com/nivle/file-reader-x.git"
     },
     "keywords": [
-        "file-reader",
-        "file-reader-x",
-        "angular-file-reader",
-        "angular-file-reader-x",
-        "file-reader-angular",
-        "file-reader-angular-x"
+        "file-reader-x"
     ],
     "author": "nivle",
     "license": "Apache-2.0",
