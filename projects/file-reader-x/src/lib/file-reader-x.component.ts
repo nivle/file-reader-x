@@ -32,35 +32,19 @@ export class FileReaderXComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public readAsArrayBuffer(fileInputData: Blob | Blob[]) {
-        if (Array.isArray(fileInputData)) {
-            return this.fileReaderXService.readFiles(fileInputData, "readAsArrayBuffer");
-        } else {
-            return this.fileReaderXService.readFile(fileInputData, "readAsArrayBuffer");
-        }
+    public readAsArrayBuffer(filesInputData: Blob | Blob[]) {
+        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsArrayBuffer");
     }
 
-    public readAsBinaryString(fileInputData: Blob | Blob[]) {
-        if (Array.isArray(fileInputData)) {
-            return this.fileReaderXService.readFiles(fileInputData, "readAsBinaryString");
-        } else {
-            return this.fileReaderXService.readFile(fileInputData, "readAsBinaryString");
-        }
+    public readAsBinaryString(filesInputData: Blob | Blob[]) {
+        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsBinaryString");
     }
 
-    public readAsDataURL(fileInputData: Blob | Blob[]) {
-        if (Array.isArray(fileInputData)) {
-            return this.fileReaderXService.readFiles(fileInputData, "readAsDataURL");
-        } else {
-            return this.fileReaderXService.readFile(fileInputData, "readAsDataURL");
-        }
+    public readAsDataURL(filesInputData: Blob | Blob[]) {
+        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsDataURL");
     }
 
-    public readAsText(fileInputData: Blob | Blob[], encoding = "utf-8") {
-        if (Array.isArray(fileInputData)) {
-            return this.fileReaderXService.readFiles(fileInputData, "readAsText", encoding);
-        } else {
-            return this.fileReaderXService.readFile(fileInputData, "readAsText", encoding);
-        }
+    public readAsText(filesInputData: Blob | Blob[], encoding = "utf-8") {
+        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsText", encoding);
     }
 }

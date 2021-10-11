@@ -13,7 +13,7 @@
 // limitations under the License.
 
 const fileReaderX = {
-    readFile: function readFile(options = { file: null, readFileAs: "readAsDataURL", encoding: "utf-8" }) {
+    readFile: (options = { file: null, readFileAs: "readAsDataURL", encoding: "utf-8" }) => {
         return new Promise(resolve => {
             let fileReader = new FileReader();
 
@@ -30,41 +30,29 @@ const fileReaderX = {
         });
     },
 
-    readFiles: function readFiles(options = { files: [], readFileAs: "readAsDataURL", encoding: "utf-8" }) {
-        return Promise.all(options.files.map(file => {
-            return fileReaderX.readFile(file, options.readFileAs, options.encoding);
-        }));
-    },
-
-    readAsArrayBuffer: function readAsArrayBuffer(fileInputData) {
-        if (Array.isArray(fileInputData)) {
-            return fileReaderX.readFiles({ files: fileInputData, readFilesAs: "readAsArrayBuffer" });
+    readFilesInputData: (options = { filesInputData: [], readFileAs: "readAsDataURL", encoding: "utf-8" }) => {
+        if (Array.isArray(options.filesInputData)) {
+            return Promise.all(options.filesInputData.map(file => {
+                return fileReaderX.readFile({ file: file, readFileAs: options.readFileAs, encoding: options.encoding });
+            }));
         } else {
-            return fileReaderX.readFile({ file: fileInputData, readFileAs: "readAsArrayBuffer" });
+            return fileReaderX.readFile({ file: options.filesInputData, readFileAs: options.readFileAs, encoding: options.encoding });
         }
     },
 
-    readAsBinaryString: function readAsBinaryString(fileInputData) {
-        if (Array.isArray(fileInputData)) {
-            return fileReaderX.readFiles({ files: fileInputData, readFilesAs: "readAsBinaryString" });
-        } else {
-            return fileReaderX.readFile({ file: fileInputData, readFileAs: "readAsBinaryString" });
-        }
+    readAsArrayBuffer: filesInputData => {
+        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsArrayBuffer" });
     },
 
-    readAsDataURL: function readAsDataURL(fileInputData) {
-        if (Array.isArray(fileInputData)) {
-            return fileReaderX.readFiles({ files: fileInputData, readFilesAs: "readAsDataURL" });
-        } else {
-            return fileReaderX.readFile({ file: fileInputData, readFileAs: "readAsDataURL" });
-        }
+    readAsBinaryString: filesInputData => {
+        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsBinaryString" });
     },
 
-    readAsText: function readAsText(fileInputData, encoding = "utf-8") {
-        if (Array.isArray(fileInputData)) {
-            return fileReaderX.readFiles({ files: fileInputData, readFilesAs: "readAsText", encoding: encoding });
-        } else {
-            return fileReaderX.readFile({ file: fileInputData, readFileAs: "readAsText", encoding: encoding });
-        }
+    readAsDataURL: filesInputData => {
+        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsDataURL" });
+    },
+
+    readAsText: (filesInputData, encoding = "utf-8") => {
+        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsText", encoding: encoding });
     }
 };
