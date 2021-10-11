@@ -13,46 +13,46 @@
 // limitations under the License.
 
 const fileReaderX = {
-    readFile: (options = { file: null, readFileAs: "readAsDataURL", encoding: "utf-8" }) => {
+    readFile: (file = null, readFileAs = "readAsDataURL", encoding = "utf-8") => {
         return new Promise(resolve => {
             let fileReader = new FileReader();
 
             fileReader.onload = event => {
-                options.file.data = event.target.result;
-                resolve(options.file);
+                file.data = event.target.result;
+                resolve(file);
             };
 
-            if (options.readFileAs === "readAsText") {
-                fileReader[options.readFileAs](options.file, options.encoding);
+            if (readFileAs === "readAsText") {
+                fileReader[readFileAs](file, encoding);
             } else {
-                fileReader[options.readFileAs](options.file);
+                fileReader[readFileAs](file);
             }
         });
     },
 
-    readFilesInputData: (options = { filesInputData: [], readFileAs: "readAsDataURL", encoding: "utf-8" }) => {
-        if (Array.isArray(options.filesInputData)) {
-            return Promise.all(options.filesInputData.map(file => {
-                return fileReaderX.readFile({ file: file, readFileAs: options.readFileAs, encoding: options.encoding });
+    readFilesInputData: (filesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") => {
+        if (Array.isArray(filesInputData)) {
+            return Promise.all(filesInputData.map(file => {
+                return fileReaderX.readFile(file, readFileAs, encoding);
             }));
         } else {
-            return fileReaderX.readFile({ file: options.filesInputData, readFileAs: options.readFileAs, encoding: options.encoding });
+            return fileReaderX.readFile(filesInputData, readFileAs, encoding);
         }
     },
 
     readAsArrayBuffer: filesInputData => {
-        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsArrayBuffer" });
+        return fileReaderX.readFilesInputData(filesInputData, "readAsArrayBuffer");
     },
 
     readAsBinaryString: filesInputData => {
-        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsBinaryString" });
+        return fileReaderX.readFilesInputData(filesInputData, "readAsBinaryString");
     },
 
     readAsDataURL: filesInputData => {
-        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsDataURL" });
+        return fileReaderX.readFilesInputData(filesInputData, "readAsDataURL");
     },
 
     readAsText: (filesInputData, encoding = "utf-8") => {
-        return fileReaderX.readFilesInputData({ filesInputData: filesInputData, readFileAs: "readAsText", encoding: encoding });
+        return fileReaderX.readFilesInputData(filesInputData, "readAsText", encoding);
     }
 };
