@@ -48,13 +48,11 @@ export class FileReaderXService {
         });
     }
 
-    public readFilesInputData(idOrFilesInputData: any = [], readFileAs: string = "readAsDataURL", encoding: string = "utf-8") {
-        let filesInputData = idOrFilesInputData;
+    public readFilesInputData(filesInputData: any = [], readFileAs: string = "readAsDataURL", encoding: string = "utf-8") {
+        if (typeof filesInputData === "string") {
+            let inputElement: any = document.getElementById(filesInputData);
 
-        if (typeof idOrFilesInputData === "string") {
-            let inputElement: any = document.getElementById(idOrFilesInputData);
-
-            if (inputElement.getAttribute("multiple") == undefined) {
+            if (inputElement.getAttribute("multiple") === undefined) {
                 filesInputData = inputElement.files[0];
             } else {
                 filesInputData = Array.from(inputElement.files);

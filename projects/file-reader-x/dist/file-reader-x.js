@@ -30,13 +30,11 @@ const fileReaderX = {
         });
     },
 
-    readFilesInputData: (idOrFilesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") => {
-        let filesInputData = idOrFilesInputData;
+    readFilesInputData: (filesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") => {
+        if (typeof filesInputData === "string") {
+            let inputElement = document.getElementById(filesInputData);
 
-        if (typeof idOrFilesInputData === "string") {
-            let inputElement = document.getElementById(idOrFilesInputData);
-
-            if (inputElement.getAttribute("multiple") == undefined) {
+            if (inputElement.getAttribute("multiple") === undefined) {
                 filesInputData = inputElement.files[0];
             } else {
                 filesInputData = Array.from(inputElement.files);
@@ -52,19 +50,19 @@ const fileReaderX = {
         }
     },
 
-    readAsArrayBuffer: idOrFilesInputData => {
-        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsArrayBuffer");
+    readAsArrayBuffer: filesInputData => {
+        return fileReaderX.readFilesInputData(filesInputData, "readAsArrayBuffer");
     },
 
-    readAsBinaryString: idOrFilesInputData => {
-        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsBinaryString");
+    readAsBinaryString: filesInputData => {
+        return fileReaderX.readFilesInputData(filesInputData, "readAsBinaryString");
     },
 
-    readAsDataURL: idOrFilesInputData => {
-        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsDataURL");
+    readAsDataURL: filesInputData => {
+        return fileReaderX.readFilesInputData(filesInputData, "readAsDataURL");
     },
 
-    readAsText: (idOrFilesInputData, encoding = "utf-8") => {
-        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsText", encoding);
+    readAsText: (filesInputData, encoding = "utf-8") => {
+        return fileReaderX.readFilesInputData(filesInputData, "readAsText", encoding);
     }
 };
