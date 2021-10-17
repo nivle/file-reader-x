@@ -1,8 +1,8 @@
 {
     "name": "file-reader-x",
-    "version": "3.0.8",
+    "version": "3.0.9",
     "description": "A package to ease the reading of files.",
-    "main": "file-reader-x.js",
+    "main": "dist/file-reader-x.js",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/nivle/file-reader-x.git"

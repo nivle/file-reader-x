@@ -48,7 +48,19 @@ export class FileReaderXService {
         });
     }
 
-    public readFilesInputData(filesInputData: any = [], readFileAs: string = "readAsDataURL", encoding: string = "utf-8") {
+    public readFilesInputData(idOrFilesInputData: any = [], readFileAs: string = "readAsDataURL", encoding: string = "utf-8") {
+        let filesInputData = idOrFilesInputData;
+
+        if (typeof idOrFilesInputData === "string") {
+            let inputElement: any = document.getElementById(idOrFilesInputData);
+
+            if (inputElement.getAttribute("multiple") == undefined) {
+                filesInputData = inputElement.files[0];
+            } else {
+                filesInputData = Array.from(inputElement.files);
+            }
+        }
+
         if (Array.isArray(filesInputData)) {
             return Promise.all(filesInputData.map(file => {
                 return this.readFile(file, readFileAs, encoding);

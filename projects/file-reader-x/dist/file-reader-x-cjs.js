@@ -29,7 +29,19 @@ function readFile(file = null, readFileAs = "readAsDataURL", encoding = "utf-8")
     });
 }
 
-function readFilesInputData(filesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") {
+function readFilesInputData(idOrFilesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") {
+    let filesInputData = idOrFilesInputData;
+
+    if (typeof idOrFilesInputData === "string") {
+        let inputElement = document.getElementById(idOrFilesInputData);
+
+        if (inputElement.getAttribute("multiple") == undefined) {
+            filesInputData = inputElement.files[0];
+        } else {
+            filesInputData = Array.from(inputElement.files);
+        }
+    }
+
     if (Array.isArray(filesInputData)) {
         return Promise.all(filesInputData.map(file => {
             return readFile(file, readFileAs, encoding);
@@ -40,20 +52,20 @@ function readFilesInputData(filesInputData = [], readFileAs = "readAsDataURL", e
 }
 
 const fileReaderX = {
-    readAsArrayBuffer: filesInputData => {
-        return readFilesInputData(filesInputData, "readAsArrayBuffer");
+    readAsArrayBuffer: idOrFilesInputData => {
+        return readFilesInputData(idOrFilesInputData, "readAsArrayBuffer");
     },
 
-    readAsBinaryString: filesInputData => {
-        return readFilesInputData(filesInputData, "readAsBinaryString");
+    readAsBinaryString: idOrFilesInputData => {
+        return readFilesInputData(idOrFilesInputData, "readAsBinaryString");
     },
 
-    readAsDataURL: filesInputData => {
-        return readFilesInputData(filesInputData, "readAsDataURL");
+    readAsDataURL: idOrFilesInputData => {
+        return readFilesInputData(idOrFilesInputData, "readAsDataURL");
     },
 
-    readAsText: (filesInputData, encoding = "utf-8") => {
-        return readFilesInputData(filesInputData, "readAsText", encoding);
+    readAsText: (idOrFilesInputData, encoding = "utf-8") => {
+        return readFilesInputData(idOrFilesInputData, "readAsText", encoding);
     }
 };
 

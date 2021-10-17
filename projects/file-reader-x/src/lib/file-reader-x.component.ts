@@ -32,19 +32,19 @@ export class FileReaderXComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public readAsArrayBuffer(filesInputData: Blob | Blob[]) {
-        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsArrayBuffer");
+    public readAsArrayBuffer(idOrFilesInputData: string | Blob | Blob[]) {
+        return this.fileReaderXService.readFilesInputData(idOrFilesInputData, "readAsArrayBuffer");
     }
 
-    public readAsBinaryString(filesInputData: Blob | Blob[]) {
-        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsBinaryString");
+    public readAsBinaryString(idOrFilesInputData: string | Blob | Blob[]) {
+        return this.fileReaderXService.readFilesInputData(idOrFilesInputData, "readAsBinaryString");
     }
 
-    public readAsDataURL(filesInputData: Blob | Blob[]) {
-        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsDataURL");
+    public readAsDataURL(idOrFilesInputData: string | Blob | Blob[]) {
+        return this.fileReaderXService.readFilesInputData(idOrFilesInputData, "readAsDataURL");
     }
 
-    public readAsText(filesInputData: Blob | Blob[], encoding = "utf-8") {
-        return this.fileReaderXService.readFilesInputData(filesInputData, "readAsText", encoding);
+    public readAsText(idOrFilesInputData: string | Blob | Blob[], encoding = "utf-8") {
+        return this.fileReaderXService.readFilesInputData(idOrFilesInputData, "readAsText", encoding);
     }
 }

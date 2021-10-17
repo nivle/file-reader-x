@@ -30,7 +30,19 @@ const fileReaderX = {
         });
     },
 
-    readFilesInputData: (filesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") => {
+    readFilesInputData: (idOrFilesInputData = [], readFileAs = "readAsDataURL", encoding = "utf-8") => {
+        let filesInputData = idOrFilesInputData;
+
+        if (typeof idOrFilesInputData === "string") {
+            let inputElement = document.getElementById(idOrFilesInputData);
+
+            if (inputElement.getAttribute("multiple") == undefined) {
+                filesInputData = inputElement.files[0];
+            } else {
+                filesInputData = Array.from(inputElement.files);
+            }
+        }
+
         if (Array.isArray(filesInputData)) {
             return Promise.all(filesInputData.map(file => {
                 return fileReaderX.readFile(file, readFileAs, encoding);
@@ -40,19 +52,19 @@ const fileReaderX = {
         }
     },
 
-    readAsArrayBuffer: filesInputData => {
-        return fileReaderX.readFilesInputData(filesInputData, "readAsArrayBuffer");
+    readAsArrayBuffer: idOrFilesInputData => {
+        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsArrayBuffer");
     },
 
-    readAsBinaryString: filesInputData => {
-        return fileReaderX.readFilesInputData(filesInputData, "readAsBinaryString");
+    readAsBinaryString: idOrFilesInputData => {
+        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsBinaryString");
     },
 
-    readAsDataURL: filesInputData => {
-        return fileReaderX.readFilesInputData(filesInputData, "readAsDataURL");
+    readAsDataURL: idOrFilesInputData => {
+        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsDataURL");
     },
 
-    readAsText: (filesInputData, encoding = "utf-8") => {
-        return fileReaderX.readFilesInputData(filesInputData, "readAsText", encoding);
+    readAsText: (idOrFilesInputData, encoding = "utf-8") => {
+        return fileReaderX.readFilesInputData(idOrFilesInputData, "readAsText", encoding);
     }
 };
