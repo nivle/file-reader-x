@@ -33,10 +33,10 @@ function readFilesInputData(filesInputData = [], readFileAs = "readAsDataURL", e
     if (typeof filesInputData === "string") {
         let inputElement = document.getElementById(filesInputData);
 
-        if (inputElement.getAttribute("multiple") === undefined) {
-            filesInputData = inputElement.files[0];
-        } else {
+        if (inputElement.hasAttribute("multiple")) {
             filesInputData = Array.from(inputElement.files);
+        } else {
+            filesInputData = inputElement.files[0];
         }
     }
 
@@ -49,24 +49,25 @@ function readFilesInputData(filesInputData = [], readFileAs = "readAsDataURL", e
     }
 }
 
-const fileReaderX = {
-    readAsArrayBuffer: filesInputData => {
-        return readFilesInputData(filesInputData, "readAsArrayBuffer");
-    },
+function readAsArrayBuffer(filesInputData) {
+    return readFilesInputData(filesInputData, "readAsArrayBuffer");
+}
 
-    readAsBinaryString: filesInputData => {
-        return readFilesInputData(filesInputData, "readAsBinaryString");
-    },
+function readAsBinaryString(filesInputData) {
+    return readFilesInputData(filesInputData, "readAsBinaryString");
+}
 
-    readAsDataURL: filesInputData => {
-        return readFilesInputData(filesInputData, "readAsDataURL");
-    },
+function readAsDataURL(filesInputData) {
+    return readFilesInputData(filesInputData, "readAsDataURL");
+}
 
-    readAsText: (filesInputData, encoding = "utf-8") => {
-        return readFilesInputData(filesInputData, "readAsText", encoding);
-    }
-};
+function readAsText(filesInputData, encoding = "utf-8") {
+    return readFilesInputData(filesInputData, "readAsText", encoding);
+}
 
 module.exports = {
-    fileReaderX: fileReaderX
+    readAsArrayBuffer: readAsArrayBuffer,
+    readAsBinaryString: readAsBinaryString,
+    readAsDataURL: readAsDataURL,
+    readAsText: readAsText
 };

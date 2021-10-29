@@ -34,10 +34,10 @@ const fileReaderX = {
         if (typeof filesInputData === "string") {
             let inputElement = document.getElementById(filesInputData);
 
-            if (inputElement.getAttribute("multiple") === undefined) {
-                filesInputData = inputElement.files[0];
-            } else {
+            if (inputElement.hasAttribute("multiple")) {
                 filesInputData = Array.from(inputElement.files);
+            } else {
+                filesInputData = inputElement.files[0];
             }
         }
 
