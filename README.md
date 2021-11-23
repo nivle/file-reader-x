@@ -9,14 +9,10 @@ A package to ease the reading of files.
  
  `yarn add file-reader-x`
 
-# Raw
-
-JS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/dist/file-reader-x.js
-
-CJS: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/dist/file-reader-x-cjs.js
-
-ESM: https://raw.githubusercontent.com/nivle/file-reader-x/main/projects/file-reader-x/dist/file-reader-x-esm.js
-
 # Examples
 
-[CJS Example](https://stackblitz.com/edit/file-reader-x?file=index.js)
+[JS Example](https://stackblitz.com/edit/file-reader-x?file=index.js)
+[CJS Example](https://stackblitz.com/edit/file-reader-x-cjs?file=index.js)
+[ESM Example](https://stackblitz.com/edit/file-reader-x-esm?file=index.js)
+
+[Angular Example]>>coming in the future...

@@ -17,8 +17,15 @@ function readFile(file = null, readFileAs = "readAsDataURL", encoding = "utf-8")
         let fileReader = new FileReader();
 
         fileReader.onload = event => {
-            file.data = event.target.result;
-            resolve(file);
+            resolve({
+                data: event.target.result,
+                lastModified: file.lastModified,
+                lastModifiedDate: file.lastModifiedDate,
+                name: file.name,
+                size: file.size,
+                type: file.type,
+                webkitRelativePath: file.webkitRelativePath
+            });
         };
 
         if (readFileAs === "readAsText") {
